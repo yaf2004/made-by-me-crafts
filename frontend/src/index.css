@@ -1,0 +1,105 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600&display=swap');
+
+@layer base {
+  :root {
+    --background: 27 47% 97%;
+    --foreground: 20 15% 15%;
+    --card: 0 0% 100%;
+    --card-foreground: 20 15% 15%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 20 15% 15%;
+    --primary: 14 55% 52%;
+    --primary-foreground: 27 47% 97%;
+    --secondary: 30 25% 92%;
+    --secondary-foreground: 20 15% 15%;
+    --muted: 30 25% 92%;
+    --muted-foreground: 20 10% 45%;
+    --accent: 196 35% 35%;
+    --accent-foreground: 27 47% 97%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 27 20% 85%;
+    --input: 27 20% 85%;
+    --ring: 14 55% 52%;
+    --radius: 0.5rem;
+
+    /* Brand palette */
+    --cream:   #F7F0E8;
+    --charcoal:#2A2118;
+    --rust:    #C96A3F;
+    --rust-dk: #A8552F;
+    --teal:    #3D7A8A;
+    --sage:    #7A8C6E;
+    --blush:   #D4856A;
+    --sand:    #E8D5BE;
+  }
+}
+
+@layer base {
+  * { @apply border-border; outline-offset: 2px; }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    line-height: 1.6;
+    background-color: var(--cream);
+    color: var(--charcoal);
+  }
+  ::selection { background-color: var(--rust); color: var(--cream); }
+}
+
+@layer utilities {
+  .font-display { font-family: 'Playfair Display', serif; }
+  .font-body    { font-family: 'DM Sans', system-ui, sans-serif; }
+
+  .text-balance { text-wrap: balance; }
+
+  .vertical-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+  }
+
+  /* Scallop / craft border accent */
+  .border-scallop {
+    border-top: 3px dotted var(--rust);
+  }
+
+  .focus-craft:focus-visible {
+    outline: 2px solid var(--rust);
+    outline-offset: 2px;
+  }
+
+  /* Input style for dark RSVP section */
+  .craft-input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(247, 240, 232, 0.25);
+    padding: 0.625rem 0;
+    font-size: 1rem;
+    font-family: 'DM Sans', system-ui, sans-serif;
+    color: var(--cream);
+    transition: border-color 0.3s ease;
+  }
+  .craft-input::placeholder { color: rgba(247,240,232,0.35); }
+  .craft-input:focus {
+    outline: none;
+    border-bottom-color: var(--rust);
+  }
+
+  /* Warm card shadow */
+  .shadow-warm {
+    box-shadow: 0 4px 24px rgba(42,33,24,0.10);
+  }
+
+  /* Heart bullet */
+  .heart-bullet::before {
+    content: '♥';
+    color: var(--rust);
+    margin-right: 0.5rem;
+    font-size: 0.7rem;
+  }
+}
