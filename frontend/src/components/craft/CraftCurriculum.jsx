@@ -4,7 +4,7 @@ import PackageCard from "./PackageCard";
 import { packages, alsoHappening, eventDetails } from "./packages";
 import { Mic, Music, Users, ShoppingBag } from "lucide-react";
 
-const darkSectionColor = "#5B7A7F";
+const darkSectionColor = "#3C0008";
 
 export default function CraftCurriculum({ selectedPackages, onToggle }) {
   return (
