@@ -275,6 +275,16 @@ export default function RSVPForm({ selectedPackages }) {
                 Transfer <strong style={{ color: "#F7C59F" }}>{totalDue.toLocaleString()} birr</strong> to our account, then confirm below.
               </p>
 
+              <div className="rounded-2xl border p-4 text-sm" style={{ borderColor: "rgba(253,246,240,0.12)", backgroundColor: "rgba(253,246,240,0.03)" }}>
+                <p className="mb-2 text-[11px] font-semibold uppercase tracking-[0.25em]" style={{ color: "rgba(253,246,240,0.45)" }}>
+                  Payment accounts
+                </p>
+                <ul className="space-y-2" style={{ color: "rgba(253,246,240,0.7)" }}>
+                  <li><strong style={{ color: "#F7C59F" }}>CBE</strong> — Betselot Alemseged<br />1000348823594</li>
+                  <li><strong style={{ color: "#F7C59F" }}>Telebirr</strong> — Betselot<br />0945127874</li>
+                </ul>
+              </div>
+
               <div className="flex gap-2">
                 {["screenshot", "link"].map((method) => (
                   <button key={method} type="button" onClick={() => set("payment_method", method)}
