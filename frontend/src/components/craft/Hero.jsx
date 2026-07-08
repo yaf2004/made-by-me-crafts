@@ -7,7 +7,7 @@ import { eventDetails } from "./packages";
 const MBM_LOGO = "/logos/mbm-logo.jpg";
 const AURORA_LOGO = "/logos/aurora-logo.jpg";
 
-const HERO_DARK = "#5B7A7F";
+const HERO_DARK = "#3C0008";
 
 export default function Hero({ onReserve }) {
   return (
