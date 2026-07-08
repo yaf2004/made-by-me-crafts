@@ -66,7 +66,7 @@ export const packages = [
     ],
     vendor:      "By Artsphere",
     vendorHandle: "@artsphereart",
-    color:       "#3C0008",
+    color:       "#A8D8C8",
     image:       "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&auto=format&fit=crop&q=70",
   },
   {

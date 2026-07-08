@@ -3,8 +3,6 @@ import { motion } from "framer-motion";
 import { Check, Clock, Sparkles, Instagram } from "lucide-react";
 
 export default function PackageCard({ pkg, isSelected, onSelect }) {
-  const hasPrice = pkg.prices.some((p) => p.amount !== null);
-
   return (
     <motion.article
       initial={{ opacity: 0, y: 28 }}
@@ -66,7 +64,7 @@ export default function PackageCard({ pkg, isSelected, onSelect }) {
           {pkg.prices.map((p, i) => (
             <div key={i} className="flex items-center justify-between gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: `${pkg.color}20` }}>
               <span className="text-xs leading-snug" style={{ color: "rgba(45,31,31,0.7)" }}>{p.label}</span>
-              {p.amount !== null ? (
+              {typeof p.amount === "number" ? (
                 <span className="font-display text-lg font-medium shrink-0" style={{ color: "#E07A5F" }}>
                   {p.amount.toLocaleString()} <span className="text-xs font-normal" style={{ color: "rgba(45,31,31,0.45)" }}>birr</span>
                 </span>
