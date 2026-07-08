@@ -58,13 +58,17 @@ export default function Hero({ onReserve }) {
             initial={{ opacity: 0, y: -12 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.4, duration: 0.7 }}
+            className="flex items-center gap-3"
           >
             <div
-              className="flex min-h-[48px] min-w-[180px] items-center justify-center rounded-2xl px-4 py-2 text-center text-[11px] font-medium uppercase tracking-[0.22em]"
-              style={{ backgroundColor: "rgba(253,246,240,0.12)", border: "1.5px solid rgba(253,246,240,0.22)", color: "rgba(253,246,240,0.9)" }}
+              className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white/10"
+              style={{ border: "1.5px solid rgba(253,246,240,0.2)" }}
             >
-              Aurora Coworking Space
+              <img src={AURORA_LOGO} alt="Aurora Coworking Space" className="h-full w-full object-cover" onError={(e) => { e.target.style.display='none'; }} />
             </div>
+            <span className="text-xs font-medium uppercase tracking-[0.3em]" style={{ color: "rgba(253,246,240,0.75)" }}>
+              Aurora Coworking
+            </span>
           </motion.div>
         </div>
 
