@@ -2,51 +2,44 @@ import React from "react";
 import { motion } from "framer-motion";
 import PackageCard from "./PackageCard";
 import { packages, alsoHappening, eventDetails } from "./packages";
+import { Mic, Music, Users, ShoppingBag } from "lucide-react";
+
+const iconMap = { "🎤": Mic, "🎵": Music, "🤝": Users, "🛍️": ShoppingBag };
 
 export default function CraftCurriculum({ selectedPackages, onToggle }) {
   return (
     <>
-      {/* ── Craft section ── */}
-      <section id="crafts" style={{ backgroundColor: "#F7F0E8" }} className="px-6 py-20 md:px-14 md:py-28">
+      {/* ── Craft Menu ── */}
+      <section id="crafts" style={{ backgroundColor: "#FDF6F0" }} className="px-6 py-20 md:px-14 md:py-28">
         <div className="mx-auto max-w-7xl">
+
           {/* Header */}
-          <div className="mb-14 grid gap-6 md:grid-cols-12 md:items-end">
-            <div className="md:col-span-8">
-              <p
-                className="mb-3 text-[11px] font-medium uppercase tracking-[0.4em]"
-                style={{ color: "#3D7A8A" }}
-              >
-                Craft Spotlight
-              </p>
-              <h2
-                className="font-display leading-[1.05]"
-                style={{
-                  color: "#2A2118",
-                  fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-                  fontStyle: "italic",
-                  fontWeight: 500,
-                }}
-              >
-                Choose your craft.
-                <br />
-                <span style={{ color: "#C96A3F", fontStyle: "normal", fontWeight: 400 }}>
-                  Make something yours.
-                </span>
-              </h2>
-            </div>
-            <div className="md:col-span-4">
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(42,33,24,0.65)" }}>
-                Each activity is included in the{" "}
-                <strong style={{ color: "#2A2118" }}>
-                  {eventDetails.entranceFee} {eventDetails.currency}
-                </strong>{" "}
-                entrance fee — except Rhinestone Decorating which has an add-on cost. Select what
-                you'd like to try and we'll hold your spot.
-              </p>
-            </div>
+          <div className="mb-6 text-center">
+            <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.45em]" style={{ color: "#E07A5F" }}>
+              Craft Menu
+            </p>
+            <h2
+              className="font-display leading-[1.05]"
+              style={{ color: "#2D1F1F", fontSize: "clamp(2.4rem, 6vw, 4rem)", fontStyle: "italic", fontWeight: 500 }}
+            >
+              Choose your crafts
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-sm leading-relaxed" style={{ color: "rgba(45,31,31,0.6)" }}>
+              Browse the craft menu below and select the activities you'd like to try. You can{" "}
+              <strong style={{ color: "#2D1F1F" }}>select multiple</strong>. This is how we reserve your spot — your place at each activity station is limited, so RSVP early!
+            </p>
           </div>
 
-          {/* Cards grid */}
+          {/* Important note */}
+          <div className="mx-auto mb-12 max-w-2xl rounded-2xl px-6 py-4 text-center text-sm leading-relaxed" style={{ backgroundColor: "#F4C2C230", border: "1.5px solid #F4C2C2" }}>
+            <span className="font-semibold" style={{ color: "#2D1F1F" }}>💳 How payment works: </span>
+            <span style={{ color: "rgba(45,31,31,0.7)" }}>
+              The <strong style={{ color: "#E07A5F" }}>250 birr entrance fee</strong> (includes refreshments) is paid when you RSVP to confirm your spot.{" "}
+              <strong style={{ color: "#2D1F1F" }}>Craft activity fees are paid in person</strong> directly to the instructor on the day — not here.
+            </span>
+          </div>
+
+          {/* Cards */}
           <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
             {packages.map((pkg) => (
               <PackageCard
@@ -57,44 +50,78 @@ export default function CraftCurriculum({ selectedPackages, onToggle }) {
               />
             ))}
           </div>
+
+          {/* Selection reminder */}
+          {selectedPackages.length > 0 && (
+            <motion.div
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-10 flex flex-wrap items-center justify-center gap-3"
+            >
+              <span className="text-sm" style={{ color: "rgba(45,31,31,0.6)" }}>Selected:</span>
+              {selectedPackages.map((p) => (
+                <span key={p.id} className="rounded-full px-4 py-1.5 text-sm font-medium" style={{ backgroundColor: `${p.color}30`, color: "#2D1F1F", border: `1px solid ${p.color}` }}>
+                  {p.name}
+                </span>
+              ))}
+              <span className="text-sm font-medium" style={{ color: "#E07A5F" }}>
+                → scroll down to RSVP
+              </span>
+            </motion.div>
+          )}
         </div>
       </section>
 
-      {/* ── Also happening ── */}
-      <section style={{ backgroundColor: "#2A2118" }} className="px-6 py-16 md:px-14">
+      {/* ── Open Mic spotlight ── */}
+      <section style={{ backgroundColor: "#2D1F1F" }} className="px-6 py-20 md:px-14">
         <div className="mx-auto max-w-7xl">
-          <p
-            className="mb-8 text-center text-[11px] font-medium uppercase tracking-[0.45em]"
-            style={{ color: "#C96A3F" }}
-          >
-            Also Happening
-          </p>
-          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-            {alsoHappening.map((item) => (
-              <motion.div
-                key={item.label}
-                initial={{ opacity: 0, y: 16 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-40px" }}
-                transition={{ duration: 0.55, ease: "easeOut" }}
-                className="flex flex-col items-center gap-3 px-4 py-6 text-center"
-                style={{
-                  border: "1px solid rgba(247,240,232,0.1)",
-                  backgroundColor: "rgba(247,240,232,0.04)",
-                }}
+          <div className="grid gap-12 md:grid-cols-2 md:items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7 }}
+            >
+              <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.45em]" style={{ color: "#F2A6A6" }}>
+                Open Stage
+              </p>
+              <h2
+                className="font-display mb-4"
+                style={{ color: "#FDF6F0", fontSize: "clamp(2rem, 5vw, 3.2rem)", fontStyle: "italic", fontWeight: 500 }}
               >
-                <span style={{ fontSize: "2rem" }}>{item.icon}</span>
-                <p
-                  className="font-display text-xl"
-                  style={{ color: "#F7F0E8", fontStyle: "italic" }}
+                Open Mic — every talent welcome
+              </h2>
+              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(253,246,240,0.65)" }}>
+                Sing, perform, read poetry, share a story, play an instrument — the stage is open to every kind of talent. Whether you've been performing for years or you're just starting out, this is your moment.
+              </p>
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.65)" }}>
+                <span style={{ color: "#D4BBEA", fontWeight: 600 }}>Just starting your creative career?</span> Use the open mic as your launchpad — introduce yourself, share your art, and get visibility in a warm, supportive crowd.
+              </p>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 24 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.7, delay: 0.15 }}
+              className="grid grid-cols-2 gap-4"
+            >
+              {alsoHappening.map((item) => (
+                <div
+                  key={item.label}
+                  className="flex flex-col gap-2 rounded-2xl p-5"
+                  style={{ backgroundColor: "rgba(253,246,240,0.06)", border: "1px solid rgba(253,246,240,0.1)" }}
                 >
-                  {item.label}
-                </p>
-                <p className="text-xs leading-relaxed" style={{ color: "rgba(247,240,232,0.5)" }}>
-                  {item.note}
-                </p>
-              </motion.div>
-            ))}
+                  <span style={{ fontSize: "1.8rem" }}>{item.icon}</span>
+                  <p className="font-display text-lg font-medium" style={{ color: "#FDF6F0", fontStyle: "italic" }}>
+                    {item.label}
+                  </p>
+                  <p className="text-xs leading-relaxed" style={{ color: "rgba(253,246,240,0.5)" }}>
+                    {item.note}
+                  </p>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>

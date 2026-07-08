@@ -1,9 +1,9 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Check, Clock, Sparkles, Tag } from "lucide-react";
+import { Check, Clock, Sparkles, Instagram } from "lucide-react";
 
 export default function PackageCard({ pkg, isSelected, onSelect }) {
-  const isFree = pkg.price === 0;
+  const hasPrice = pkg.prices.some((p) => p.amount !== null);
 
   return (
     <motion.article
@@ -11,151 +11,103 @@ export default function PackageCard({ pkg, isSelected, onSelect }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.65, ease: [0.16, 1, 0.3, 1] }}
-      className="group relative flex flex-col overflow-hidden"
+      className="group relative flex flex-col overflow-hidden pastel-card"
       style={{
-        backgroundColor: "#fff",
-        border: isSelected ? "2px solid #C96A3F" : "2px solid transparent",
-        boxShadow: isSelected
-          ? "0 4px 24px rgba(201,106,63,0.18)"
-          : "0 2px 16px rgba(42,33,24,0.08)",
-        transition: "border-color 0.25s, box-shadow 0.25s",
+        borderColor: isSelected ? pkg.color : undefined,
+        boxShadow: isSelected ? `0 4px 28px ${pkg.color}55` : undefined,
       }}
     >
       {/* Image */}
-      <div className="relative aspect-[4/3] overflow-hidden" style={{ backgroundColor: "#E8D5BE" }}>
+      <div className="relative aspect-[4/3] overflow-hidden" style={{ backgroundColor: "#EDE0D4" }}>
         <img
           src={pkg.image}
           alt={pkg.name}
           className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-          style={{ filter: isSelected ? "saturate(1.1)" : "saturate(0.9)" }}
         />
-        <div
-          className="absolute inset-0"
-          style={{
-            background:
-              "linear-gradient(to top, rgba(42,33,24,0.55) 0%, transparent 60%)",
-            opacity: 0,
-            transition: "opacity 0.4s",
-          }}
-        />
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(45,31,31,0.5) 0%, transparent 55%)", opacity: 0, transition: "opacity 0.4s" }} />
+
         {/* Hover badges */}
-        <div
-          className="absolute inset-x-0 bottom-0 flex flex-wrap gap-2 p-4 translate-y-2 opacity-0 transition-all duration-400 group-hover:translate-y-0 group-hover:opacity-100"
-        >
-          <span
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider"
-            style={{ backgroundColor: "rgba(247,240,232,0.92)", color: "#2A2118" }}
-          >
+        <div className="absolute inset-x-0 bottom-0 flex flex-wrap gap-2 p-3 translate-y-2 opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider rounded-full" style={{ backgroundColor: "rgba(253,246,240,0.93)", color: "#2D1F1F" }}>
             <Clock className="h-3 w-3" /> {pkg.duration}
           </span>
-          <span
-            className="inline-flex items-center gap-1.5 px-3 py-1.5 text-[11px] font-medium uppercase tracking-wider"
-            style={{ backgroundColor: "rgba(247,240,232,0.92)", color: "#2A2118" }}
-          >
+          <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[10px] font-medium uppercase tracking-wider rounded-full" style={{ backgroundColor: "rgba(253,246,240,0.93)", color: "#2D1F1F" }}>
             <Sparkles className="h-3 w-3" /> {pkg.skillLevel}
           </span>
         </div>
 
         {/* Selected check */}
         {isSelected && (
-          <div
-            className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full"
-            style={{ backgroundColor: "#C96A3F" }}
-          >
-            <Check className="h-4 w-4" style={{ color: "#F7F0E8" }} />
+          <div className="absolute right-3 top-3 flex h-7 w-7 items-center justify-center rounded-full" style={{ backgroundColor: pkg.color }}>
+            <Check className="h-4 w-4 text-white" />
           </div>
         )}
 
         {/* Vendor tag */}
-        {pkg.vendor && (
-          <div
-            className="absolute left-3 top-3 flex items-center gap-1 px-2 py-1 text-[10px] font-medium uppercase tracking-wider"
-            style={{ backgroundColor: "#3D7A8A", color: "#F7F0E8" }}
-          >
-            <Tag className="h-3 w-3" /> {pkg.vendor}
-          </div>
-        )}
+        <div className="absolute left-0 top-3 flex items-center gap-1.5 px-3 py-1.5 text-[10px] font-semibold uppercase tracking-wider" style={{ backgroundColor: pkg.color, color: "#2D1F1F" }}>
+          {pkg.vendor}
+        </div>
       </div>
 
       {/* Content */}
       <div className="flex flex-1 flex-col p-5">
-        <div className="flex items-start justify-between gap-3">
-          <h3
-            className="font-display text-2xl leading-tight"
-            style={{ color: "#2A2118", fontStyle: "normal", fontWeight: 500 }}
-          >
+        <div className="flex items-start justify-between gap-2 mb-1">
+          <h3 className="font-display text-2xl leading-tight" style={{ color: "#2D1F1F", fontWeight: 500 }}>
             {pkg.name}
           </h3>
-          <div className="text-right shrink-0">
-            {isFree ? (
-              <span
-                className="text-xs font-semibold uppercase tracking-wider px-2 py-1"
-                style={{ backgroundColor: "#7A8C6E", color: "#F7F0E8" }}
-              >
-                Included
-              </span>
-            ) : (
-              <div>
-                <span
-                  className="font-display text-2xl font-medium"
-                  style={{ color: "#C96A3F" }}
-                >
-                  {pkg.price.toLocaleString()}
-                </span>
-                <span className="ml-1 text-xs" style={{ color: "#2A2118", opacity: 0.5 }}>birr</span>
-              </div>
-            )}
-          </div>
         </div>
 
-        <p className="mt-1 text-xs font-medium uppercase tracking-wider" style={{ color: "#3D7A8A" }}>
+        <p className="text-xs font-semibold uppercase tracking-wider mb-3" style={{ color: pkg.color }}>
           {pkg.tagline}
         </p>
 
-        {pkg.priceNote && !isFree && (
-          <p className="mt-1 text-xs" style={{ color: "rgba(42,33,24,0.5)" }}>
-            {pkg.priceNote}
-          </p>
-        )}
+        {/* Prices */}
+        <div className="mb-3 space-y-1.5">
+          {pkg.prices.map((p, i) => (
+            <div key={i} className="flex items-center justify-between gap-2 rounded-lg px-3 py-2" style={{ backgroundColor: `${pkg.color}20` }}>
+              <span className="text-xs leading-snug" style={{ color: "rgba(45,31,31,0.7)" }}>{p.label}</span>
+              {p.amount !== null ? (
+                <span className="font-display text-lg font-medium shrink-0" style={{ color: "#E07A5F" }}>
+                  {p.amount.toLocaleString()} <span className="text-xs font-normal" style={{ color: "rgba(45,31,31,0.45)" }}>birr</span>
+                </span>
+              ) : (
+                <span className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: "#EDE0D4", color: "rgba(45,31,31,0.6)" }}>TBA</span>
+              )}
+            </div>
+          ))}
+        </div>
 
-        <p className="mt-3 text-sm leading-relaxed" style={{ color: "rgba(42,33,24,0.65)" }}>
+        <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(45,31,31,0.62)" }}>
           {pkg.description}
         </p>
 
-        <ul className="mt-3 space-y-1">
+        <ul className="mb-4 space-y-1">
           {pkg.materials.map((m) => (
-            <li key={m} className="flex items-center gap-2 text-xs" style={{ color: "rgba(42,33,24,0.55)" }}>
-              <span style={{ color: "#C96A3F", fontSize: "0.6rem" }}>♥</span> {m}
+            <li key={m} className="flex items-center gap-2 text-xs" style={{ color: "rgba(45,31,31,0.5)" }}>
+              <span style={{ color: pkg.color }}>♥</span> {m}
             </li>
           ))}
         </ul>
 
+        {/* Vendor handle */}
+        {pkg.vendorHandle && (
+          <div className="mb-3 flex items-center gap-1.5 text-xs" style={{ color: "rgba(45,31,31,0.45)" }}>
+            <Instagram className="h-3 w-3" /> {pkg.vendorHandle}
+          </div>
+        )}
+
         <button
           onClick={() => onSelect(pkg)}
-          className="focus-craft mt-5 inline-flex min-h-[46px] w-full items-center justify-center text-xs font-medium uppercase tracking-[0.18em] transition-all duration-200"
+          className="focus-craft mt-auto inline-flex min-h-[44px] w-full items-center justify-center text-xs font-medium uppercase tracking-[0.18em] transition-all duration-200 rounded-lg"
           style={
             isSelected
-              ? { backgroundColor: "#C96A3F", color: "#F7F0E8", border: "none" }
-              : {
-                  backgroundColor: "transparent",
-                  color: "#2A2118",
-                  border: "1.5px solid #2A2118",
-                }
+              ? { backgroundColor: pkg.color, color: "#2D1F1F", border: "none" }
+              : { backgroundColor: "transparent", color: "#2D1F1F", border: `1.5px solid ${pkg.color}` }
           }
-          onMouseEnter={(e) => {
-            if (!isSelected) {
-              e.currentTarget.style.backgroundColor = "#2A2118";
-              e.currentTarget.style.color = "#F7F0E8";
-            }
-          }}
-          onMouseLeave={(e) => {
-            if (!isSelected) {
-              e.currentTarget.style.backgroundColor = "transparent";
-              e.currentTarget.style.color = "#2A2118";
-            }
-          }}
+          onMouseEnter={(e) => { if (!isSelected) { e.currentTarget.style.backgroundColor = `${pkg.color}30`; } }}
+          onMouseLeave={(e) => { if (!isSelected) { e.currentTarget.style.backgroundColor = "transparent"; } }}
         >
-          {isSelected ? "✓ Booked" : isFree ? "Add to RSVP" : "Book This Activity"}
+          {isSelected ? "✓ Added to RSVP" : "Add to RSVP"}
         </button>
       </div>
     </motion.article>
