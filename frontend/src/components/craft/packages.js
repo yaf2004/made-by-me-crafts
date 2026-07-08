@@ -79,7 +79,7 @@ export const packages = [
     materials:   ["Edible flowers", "Wrapping & ribbon"],
     skillLevel:  "All levels",
     prices: [
-      { label: "70 birr - 110 birr depending on the flower" },
+      { label: "70 - 110 birr", range: "depending on flower" },
     ],
     vendor:      "By Dolce Chocos Ethiopia",
     vendorHandle: "@dolce_choco_eth",
@@ -96,7 +96,7 @@ export const packages = [
     materials:   ["Pipe cleaners (rainbow pack)", "Wire stems", "Floral tape"],
     skillLevel:  "Beginner-friendly",
     prices: [
-      { label: "40 - 100 birr depending on the size per 1 flower" },
+      { label: "40 - 100 birr", range: "per flower" },
     ],
     vendor:      "Vinea Blooms",
     vendorHandle: "@vinea_blooms",

@@ -68,6 +68,8 @@ export default function PackageCard({ pkg, isSelected, onSelect }) {
                 <span className="font-display text-lg font-medium shrink-0" style={{ color: "#E07A5F" }}>
                   {p.amount.toLocaleString()} <span className="text-xs font-normal" style={{ color: "rgba(45,31,31,0.45)" }}>birr</span>
                 </span>
+              ) : p.range ? (
+                <span className="text-xs font-normal" style={{ color: "rgba(45,31,31,0.6)" }}>{p.range}</span>
               ) : (
                 <span className="text-xs font-medium px-2 py-0.5 rounded-full" style={{ backgroundColor: "#EDE0D4", color: "rgba(45,31,31,0.6)" }}>TBA</span>
               )}
