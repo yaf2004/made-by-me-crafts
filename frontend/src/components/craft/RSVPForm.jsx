@@ -131,7 +131,7 @@ export default function RSVPForm({ selectedPackages }) {
 
   // ── Form ──
   return (
-    <section id="rsvp" className="relative overflow-hidden px-6 py-20 md:px-14 md:py-28" style={{ backgroundColor: "#3C0008" }}>
+    <section id="rsvp" className="relative overflow-hidden px-6 py-20 md:px-14 md:py-28" style={{ backgroundColor: "#5B7A7F" }}>
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
         <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1400&auto=format&fit=crop&q=40" alt="" className="h-full w-full object-cover" />
       </div>
