@@ -66,6 +66,20 @@ export default function RSVPForm({ selectedPackages }) {
       return;
     }
 
+    if (!form.phone.trim()) {
+      setError("Please enter a phone number so we can reach you.");
+      return;
+    }
+
+    if (form.payment_method === "screenshot" && !form.payment_screenshot_url) {
+      setError("Please upload a payment screenshot to confirm your spot.");
+      return;
+    }
+    if (form.payment_method === "link" && !form.payment_link.trim()) {
+      setError("Please enter your payment link or transaction ID.");
+      return;
+    }
+
     setSubmitting(true);
     try {
       await api.rsvp.create({
@@ -117,7 +131,7 @@ export default function RSVPForm({ selectedPackages }) {
 
   // ── Form ──
   return (
-    <section id="rsvp" className="relative overflow-hidden px-6 py-20 md:px-14 md:py-28" style={{ backgroundColor: "#3A2520" }}>
+    <section id="rsvp" className="relative overflow-hidden px-6 py-20 md:px-14 md:py-28" style={{ backgroundColor: "#5B7A7F" }}>
       <div className="absolute inset-0 opacity-[0.04] pointer-events-none">
         <img src="https://images.unsplash.com/photo-1558618047-3c8c76ca7d13?w=1400&auto=format&fit=crop&q=40" alt="" className="h-full w-full object-cover" />
       </div>
@@ -255,7 +269,7 @@ export default function RSVPForm({ selectedPackages }) {
             {/* Payment proof */}
             <div className="space-y-4 pt-2" style={{ borderTop: "1px solid rgba(253,246,240,0.1)" }}>
               <p className="text-[11px] font-semibold uppercase tracking-[0.3em]" style={{ color: "rgba(253,246,240,0.4)" }}>
-                Payment proof — entrance fee ({totalDue.toLocaleString()} birr)
+                Payment proof — entrance fee ({totalDue.toLocaleString()} birr) <span style={{ color: "#E07A5F" }}>*</span>
               </p>
               <p className="text-sm" style={{ color: "rgba(253,246,240,0.5)" }}>
                 Transfer <strong style={{ color: "#F7C59F" }}>{totalDue.toLocaleString()} birr</strong> to our account, then confirm below.

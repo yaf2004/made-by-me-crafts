@@ -4,7 +4,7 @@ import PackageCard from "./PackageCard";
 import { packages, alsoHappening, eventDetails } from "./packages";
 import { Mic, Music, Users, ShoppingBag } from "lucide-react";
 
-const darkSectionColor = "#3A2520";
+const darkSectionColor = "#5B7A7F";
 
 export default function CraftCurriculum({ selectedPackages, onToggle }) {
   return (
@@ -34,7 +34,7 @@ export default function CraftCurriculum({ selectedPackages, onToggle }) {
           <div className="mx-auto mb-12 max-w-2xl rounded-2xl px-6 py-4 text-center text-sm leading-relaxed" style={{ backgroundColor: "#F4C2C230", border: "1.5px solid #F4C2C2" }}>
             <span className="font-semibold" style={{ color: "#2D1F1F" }}>💳 How payment works: </span>
             <span style={{ color: "rgba(45,31,31,0.7)" }}>
-              The <strong style={{ color: "#E07A5F" }}>250 birr entrance fee</strong> (includes refreshments) is paid when you RSVP to confirm your spot.{" "}
+              The <strong style={{ color: "#E07A5F" }}>{eventDetails.entranceFee} {eventDetails.currency} entrance fee</strong> (includes refreshments) is paid when you RSVP to confirm your spot.{" "}
               <strong style={{ color: "#2D1F1F" }}>Craft activity fees are paid in person</strong> directly to the instructor on the day — not here.
             </span>
           </div>
@@ -96,7 +96,10 @@ export default function CraftCurriculum({ selectedPackages, onToggle }) {
                 Sing, perform, read poetry, share a story, play an instrument — the stage is open to every kind of talent. Whether you've been performing for years or you're just starting out, this is your moment.
               </p>
               <p className="mt-3 max-w-3xl text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.65)" }}>
-                <span style={{ color: "#D4BBEA", fontWeight: 600 }}>Just starting your creative career?</span> Use the open mic as your launchpad — introduce yourself, share your art, and get visibility in a warm, supportive crowd.
+                No auditions, no pressure — just sign up on the day and take the mic whenever you're ready. Sets are kept short and casual so as many people as possible get a turn, and the crowd is here to cheer you on, not judge you.
+              </p>
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.65)" }}>
+                <span style={{ color: "#D4BBEA", fontWeight: 600 }}>Just starting your creative career?</span> Use the open mic as your launchpad — introduce yourself, share your art, and get visibility in a warm, supportive crowd. Past performers have used their few minutes on stage to promote their pages, hand out business cards, and meet collaborators they still work with today.
               </p>
             </div>
 
@@ -109,7 +112,7 @@ export default function CraftCurriculum({ selectedPackages, onToggle }) {
                   <div
                     key={item.label}
                     className="flex flex-col gap-2 rounded-2xl p-5"
-                    style={{ backgroundColor: "#F7EBDD", border: "1px solid #EDE0D4" }}
+                    style={{ backgroundColor: "#FDF6F0", border: "1px solid #EDE0D4" }}
                   >
                     <span style={{ fontSize: "1.8rem" }}>{item.icon}</span>
                     <p className="font-display text-lg font-medium" style={{ color: "#2D1F1F", fontStyle: "italic" }}>

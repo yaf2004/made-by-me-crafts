@@ -32,7 +32,7 @@ export const packages = [
     vendor:      "By Pomi's Rhinestone",
     vendorHandle: "@Pomis_rihnestone_art",
     color:       "#F2A6A6",
-    image:       "https://images.unsplash.com/photo-1512436991641-6745cdb1723f?w=800&auto=format&fit=crop&q=70",
+    image:       "/menu/rhinestone.png",
   },
   {
     id:          "jewelry",
@@ -49,7 +49,7 @@ export const packages = [
     vendor:      "By Ariam's Accessories",
     vendorHandle: "@ariam.accessories",
     color:       "#C9B8E8",
-    image:       "https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?w=800&auto=format&fit=crop&q=70",
+    image:       "/menu/jewelry.png",
   },
   {
     id:          "painting",
@@ -67,7 +67,7 @@ export const packages = [
     vendor:      "By Artsphere",
     vendorHandle: "@artsphereart",
     color:       "#A8D8C8",
-    image:       "https://images.unsplash.com/photo-1460661419201-fd4cecdf8a8b?w=800&auto=format&fit=crop&q=70",
+    image:       "/menu/painting.png",
   },
   {
     id:          "flower-bouquet",
@@ -81,10 +81,10 @@ export const packages = [
     prices: [
       { label: "70 birr - 110 birr depending on the flower", amount: null },
     ],
-    vendor:      "By Vinea Blooms",
-    vendorHandle: "@Vinea_blooms",
+    vendor:      "By Dolce Choco",
+    vendorHandle: "@dolce_choco_eth",
     color:       "#F7C59F",
-    image:       "https://images.unsplash.com/photo-1490750967868-88df5691cc5f?w=800&auto=format&fit=crop&q=70",
+    image:       "/menu/edible-flower.png",
   },
   {
     id:          "fuzzy-flowers",
@@ -101,7 +101,7 @@ export const packages = [
     vendor:      "By Vinea Blooms",
     vendorHandle: "@Vinea_blooms",
     color:       "#D4BBEA",
-    image:       "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&auto=format&fit=crop&q=70",
+    image:       "/menu/fuzzy-flowers.png",
   },
   {
     id:          "coloring",
@@ -116,9 +116,9 @@ export const packages = [
       { label: "Per session", amount: 200 },
     ],
     vendor:      "By Made by Me",
-    vendorHandle: "@madebymecrafts",
+    vendorHandle: "@madebyme.4",
     color:       "#F4C2C2",
-    image:       "https://images.unsplash.com/photo-1513364776144-60967b0f800f?w=800&auto=format&fit=crop&q=70",
+    image:       "/menu/coloring.png",
   },
 ];
 

@@ -49,6 +49,13 @@ rsvpRouter.post('/', (req, res) => {
   if (!full_name || !email || !selected_package) {
     return res.status(400).json({ message: 'full_name, email, and selected_package are required.' });
   }
+  if (!phone) {
+    return res.status(400).json({ message: 'phone is required.' });
+  }
+  const hasProof = (payment_method === 'link' && payment_link) || (payment_method !== 'link' && payment_screenshot_url);
+  if (!hasProof) {
+    return res.status(400).json({ message: 'Payment proof (screenshot or payment link) is required.' });
+  }
   const result = db.prepare(`
     INSERT INTO rsvps (full_name, email, phone, selected_package, number_of_seats, guest_names, payment_method, payment_link, payment_screenshot_url, message)
     VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
