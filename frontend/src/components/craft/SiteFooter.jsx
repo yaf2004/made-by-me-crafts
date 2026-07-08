@@ -1,5 +1,5 @@
 import React from "react";
-import { MapPin, Clock, MessageCircle, Mail, Instagram, Heart } from "lucide-react";
+import { MapPin, Clock, MessageCircle, Mail, Instagram, Heart, Phone } from "lucide-react";
 import { eventDetails } from "./packages";
 
 export default function SiteFooter() {
@@ -36,8 +36,9 @@ export default function SiteFooter() {
             <p className="text-[11px] font-semibold uppercase tracking-[0.35em] mb-4" style={{ color: "#E07A5F" }}>Get in touch</p>
             <div className="flex flex-col gap-3">
               {[
-                { href: eventDetails.instagramUrl, icon: Instagram, label: "@madebymecrafts" },
-                { href: eventDetails.whatsapp, icon: MessageCircle, label: "WhatsApp us" },
+                { href: eventDetails.instagramUrl, icon: Instagram, label: "Instagram • madebyme.4" },
+                { href: eventDetails.telegram, icon: MessageCircle, label: "Telegram • @azagbrazm" },
+                { href: `tel:${eventDetails.phone}`, icon: Phone, label: `Phone • ${eventDetails.phone}` },
                 { href: `mailto:${eventDetails.email}`, icon: Mail, label: eventDetails.email },
               ].map(({ href, icon: Icon, label }) => (
                 <a key={label} href={href} target="_blank" rel="noopener noreferrer"

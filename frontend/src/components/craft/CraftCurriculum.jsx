@@ -4,7 +4,7 @@ import PackageCard from "./PackageCard";
 import { packages, alsoHappening, eventDetails } from "./packages";
 import { Mic, Music, Users, ShoppingBag } from "lucide-react";
 
-const iconMap = { "🎤": Mic, "🎵": Music, "🤝": Users, "🛍️": ShoppingBag };
+const darkSectionColor = "#3A2520";
 
 export default function CraftCurriculum({ selectedPackages, onToggle }) {
   return (
@@ -73,15 +73,16 @@ export default function CraftCurriculum({ selectedPackages, onToggle }) {
       </section>
 
       {/* ── Open Mic spotlight ── */}
-      <section style={{ backgroundColor: "#2D1F1F" }} className="px-6 py-20 md:px-14">
+      <section style={{ backgroundColor: darkSectionColor }} className="px-6 py-20 md:px-14">
         <div className="mx-auto max-w-7xl">
-          <div className="grid gap-12 md:grid-cols-2 md:items-center">
-            <motion.div
-              initial={{ opacity: 0, x: -24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
+          <motion.div
+            initial={{ opacity: 0, x: -24 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="space-y-6"
+          >
+            <div>
               <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.45em]" style={{ color: "#F2A6A6" }}>
                 Open Stage
               </p>
@@ -91,38 +92,37 @@ export default function CraftCurriculum({ selectedPackages, onToggle }) {
               >
                 Open Mic — every talent welcome
               </h2>
-              <p className="text-sm leading-relaxed mb-4" style={{ color: "rgba(253,246,240,0.65)" }}>
+              <p className="max-w-3xl text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.65)" }}>
                 Sing, perform, read poetry, share a story, play an instrument — the stage is open to every kind of talent. Whether you've been performing for years or you're just starting out, this is your moment.
               </p>
-              <p className="text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.65)" }}>
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.65)" }}>
                 <span style={{ color: "#D4BBEA", fontWeight: 600 }}>Just starting your creative career?</span> Use the open mic as your launchpad — introduce yourself, share your art, and get visibility in a warm, supportive crowd.
               </p>
-            </motion.div>
+            </div>
 
-            <motion.div
-              initial={{ opacity: 0, x: 24 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7, delay: 0.15 }}
-              className="grid grid-cols-2 gap-4"
-            >
-              {alsoHappening.map((item) => (
-                <div
-                  key={item.label}
-                  className="flex flex-col gap-2 rounded-2xl p-5"
-                  style={{ backgroundColor: "rgba(253,246,240,0.06)", border: "1px solid rgba(253,246,240,0.1)" }}
-                >
-                  <span style={{ fontSize: "1.8rem" }}>{item.icon}</span>
-                  <p className="font-display text-lg font-medium" style={{ color: "#FDF6F0", fontStyle: "italic" }}>
-                    {item.label}
-                  </p>
-                  <p className="text-xs leading-relaxed" style={{ color: "rgba(253,246,240,0.5)" }}>
-                    {item.note}
-                  </p>
-                </div>
-              ))}
-            </motion.div>
-          </div>
+            <div className="rounded-[28px] p-6 md:p-8" style={{ backgroundColor: "#FDF6F0" }}>
+              <p className="text-[11px] font-semibold uppercase tracking-[0.35em]" style={{ color: "#E07A5F" }}>
+                Event Highlights
+              </p>
+              <div className="mt-4 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+                {alsoHappening.map((item) => (
+                  <div
+                    key={item.label}
+                    className="flex flex-col gap-2 rounded-2xl p-5"
+                    style={{ backgroundColor: "#F7EBDD", border: "1px solid #EDE0D4" }}
+                  >
+                    <span style={{ fontSize: "1.8rem" }}>{item.icon}</span>
+                    <p className="font-display text-lg font-medium" style={{ color: "#2D1F1F", fontStyle: "italic" }}>
+                      {item.label}
+                    </p>
+                    <p className="text-xs leading-relaxed" style={{ color: "rgba(45,31,31,0.58)" }}>
+                      {item.note}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </motion.div>
         </div>
       </section>
     </>

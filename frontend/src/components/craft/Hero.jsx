@@ -39,7 +39,6 @@ export default function Hero({ onReserve }) {
           transition={{ delay: 0.3, duration: 0.7 }}
           className="flex items-center gap-3"
         >
-          {/* Made by Me logo */}
           <div
             className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full bg-white/10"
             style={{ border: "1.5px solid rgba(253,246,240,0.2)" }}
@@ -55,19 +54,31 @@ export default function Hero({ onReserve }) {
           initial={{ opacity: 0, y: -12 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4, duration: 0.7 }}
-          className="flex items-center gap-3"
         >
-          <span className="text-xs font-medium uppercase tracking-[0.3em]" style={{ color: "rgba(253,246,240,0.5)" }}>
-            Hosted by
-          </span>
-          {/* Aurora logo */}
           <div
-            className="flex h-12 w-12 items-center justify-center overflow-hidden rounded-full"
-            style={{ border: "1.5px solid rgba(253,246,240,0.2)" }}
+            className="flex min-h-[48px] min-w-[180px] items-center justify-center rounded-full px-4 py-2 text-center text-[11px] font-medium uppercase tracking-[0.22em]"
+            style={{ backgroundColor: "rgba(253,246,240,0.12)", border: "1.5px solid rgba(253,246,240,0.22)", color: "rgba(253,246,240,0.9)" }}
           >
-            <img src={AURORA_LOGO} alt="Aurora Coworking Space" className="h-full w-full object-cover" onError={(e) => { e.target.style.display='none'; }} />
+            Aurora Coworking Space
           </div>
         </motion.div>
+      </div>
+
+      <div className="absolute inset-x-0 top-24 z-10 px-6 md:px-14">
+        <div className="mx-auto flex max-w-6xl flex-col gap-4 lg:flex-row">
+          <div className="flex-1 rounded-[24px] border border-white/10 p-4 backdrop-blur-sm" style={{ backgroundColor: "rgba(58,37,32,0.78)" }}>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: "#F2A6A6" }}>Aurora Coworking Space</p>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.78)" }}>
+              At our co-working space, work is more than just a means to an end. We believe in creating a workspace that inspires and uplifts you, where you can connect with like-minded individuals, collaborate, and create something remarkable. Our modern office is designed to meet your professional needs while igniting your creativity and passion. Come and experience the possibilities at our co-working space.
+            </p>
+          </div>
+          <div className="flex-1 rounded-[24px] border border-white/10 p-4 backdrop-blur-sm" style={{ backgroundColor: "rgba(58,37,32,0.78)" }}>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: "#D4BBEA" }}>Made by Me Crafts</p>
+            <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.78)" }}>
+              Made by Me Crafts is a celebration of self-expression, creativity, and thoughtful gifting. From postcards, paper art, trinkets, drawings, and cute crafts to completely custom creations, every piece is handmade to tell a story and make someone feel loved—even on the most random days. Inspired by your memories, ideas, Pinterest boards, and little moments that matter, each piece is made to order and designed just for you.
+            </p>
+          </div>
+        </div>
       </div>
 
       {/* Centre content */}
@@ -85,12 +96,12 @@ export default function Hero({ onReserve }) {
             className="font-display leading-[0.9]"
             style={{
               color: "#FDF6F0",
-              fontSize: "clamp(3.8rem, 13vw, 10rem)",
+              fontSize: "clamp(3.4rem, 11vw, 8.6rem)",
               fontStyle: "italic",
               fontWeight: 500,
             }}
           >
-            Bedazzling
+            Made by Me's Craft Event
           </h1>
           <div className="mx-auto my-5 flex items-center justify-center gap-3">
             <div className="h-px w-16" style={{ backgroundColor: "rgba(242,166,166,0.4)" }} />
@@ -98,9 +109,7 @@ export default function Hero({ onReserve }) {
             <div className="h-px w-16" style={{ backgroundColor: "rgba(242,166,166,0.4)" }} />
           </div>
           <p className="mx-auto max-w-md text-sm font-light leading-relaxed" style={{ color: "rgba(253,246,240,0.72)" }}>
-            A craft-making celebration curated by{" "}
-            <em style={{ color: "#F2A6A6" }}>Made by Me Crafts</em> &amp; hosted at{" "}
-            <em style={{ color: "#D4BBEA" }}>Aurora Coworking Space</em>
+            Episode One — Bedazzling Event Hosted at Aurora Coworking Space
           </p>
         </motion.div>
       </div>
