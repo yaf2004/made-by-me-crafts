@@ -113,7 +113,7 @@ export const packages = [
     materials:   ["Printed colouring paper", "Premium crayon set"],
     skillLevel:  "All levels",
     prices: [
-      { label: "Per session", amount: 200 },
+      { label: "Per session", amount: 250 },
     ],
     vendor:      "By Made by Me",
     vendorHandle: "@madebyme.4",
