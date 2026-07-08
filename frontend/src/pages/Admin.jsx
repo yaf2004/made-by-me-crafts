@@ -19,10 +19,17 @@ export default function Admin() {
   const [filter, setFilter] = useState("all");
 
   const fetchRSVPs = async (pw = password) => {
+    const safePassword = String(pw || "").trim();
+    if (!safePassword) {
+      setError("Please enter the admin password.");
+      setAuthed(false);
+      return;
+    }
+
     setLoading(true);
     setError("");
     try {
-      const res = await fetch(`${API}/rsvp?password=${encodeURIComponent(pw)}`);
+      const res = await fetch(`${API}/rsvp?password=${encodeURIComponent(safePassword)}`);
       if (res.status === 401) { setError("Wrong password."); setAuthed(false); return; }
       const data = await res.json();
       setRsvps(data);
@@ -35,7 +42,8 @@ export default function Admin() {
   };
 
   const updateStatus = async (id, status) => {
-    await fetch(`${API}/rsvp/${id}/status?password=${encodeURIComponent(password)}`, {
+    const safePassword = String(password || "").trim();
+    await fetch(`${API}/rsvp/${id}/status?password=${encodeURIComponent(safePassword)}`, {
       method: "PATCH",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ status }),

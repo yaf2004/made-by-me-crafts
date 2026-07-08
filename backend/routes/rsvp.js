@@ -24,7 +24,22 @@ db.exec(`
   )
 `);
 
-const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'madebyme2025';
+const ADMIN_PASSWORDS = [process.env.ADMIN_PASSWORD, process.env.VITE_ADMIN_PASSWORD, 'madebyme2025']
+  .filter(Boolean)
+  .map((value) => value.trim().toLowerCase());
+
+const getAdminPassword = (req) => {
+  const fromQuery = req.query?.password;
+  const fromBody = req.body?.password;
+  const fromHeader = req.headers['x-admin-password'];
+  return [fromQuery, fromBody, fromHeader].find((value) => typeof value === 'string' && value.trim())?.trim();
+};
+
+const isValidAdminPassword = (value) => {
+  if (typeof value !== 'string') return false;
+  const normalized = value.trim().toLowerCase();
+  return ADMIN_PASSWORDS.includes(normalized);
+};
 
 export const rsvpRouter = express.Router();
 
@@ -43,14 +58,14 @@ rsvpRouter.post('/', (req, res) => {
 
 // GET /api/rsvp?password=xxx
 rsvpRouter.get('/', (req, res) => {
-  if (req.query.password !== ADMIN_PASSWORD) return res.status(401).json({ message: 'Unauthorized' });
+  if (!isValidAdminPassword(getAdminPassword(req))) return res.status(401).json({ message: 'Unauthorized' });
   const rows = db.prepare('SELECT * FROM rsvps ORDER BY created_at DESC').all();
   res.json(rows);
 });
 
 // PATCH /api/rsvp/:id/status?password=xxx
 rsvpRouter.patch('/:id/status', (req, res) => {
-  if (req.query.password !== ADMIN_PASSWORD) return res.status(401).json({ message: 'Unauthorized' });
+  if (!isValidAdminPassword(getAdminPassword(req))) return res.status(401).json({ message: 'Unauthorized' });
   const { status } = req.body;
   if (!['pending', 'confirmed', 'declined'].includes(status)) return res.status(400).json({ message: 'Invalid status.' });
   db.prepare('UPDATE rsvps SET status = ? WHERE id = ?').run(status, req.params.id);
