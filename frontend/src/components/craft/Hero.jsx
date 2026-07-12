@@ -1,6 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { ArrowDown, Heart } from "lucide-react";
+import { Collapsible, CollapsibleTrigger, CollapsibleContent } from "@/components/ui/collapsible";
 import { eventDetails } from "./packages";
 
 // Logos as base64-friendly img tags — we reference uploaded images by URL
@@ -70,24 +71,6 @@ export default function Hero({ onReserve }) {
               Aurora Coworking
             </span>
           </motion.div>
-        </div>
-
-        {/* About cards */}
-        <div className="mt-6">
-          <div className="mx-auto flex max-w-6xl flex-col gap-4 lg:flex-row">
-            <div className="flex-1 rounded-[24px] border border-white/10 p-4 backdrop-blur-sm" style={{ backgroundColor: "rgba(41,58,60,0.78)" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: "#F2A6A6" }}>Aurora Coworking Space</p>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.78)" }}>
-                At our co-working space, work is more than just a means to an end. We believe in creating a workspace that inspires and uplifts you, where you can connect with like-minded individuals, collaborate, and create something remarkable. Our modern office is designed to meet your professional needs while igniting your creativity and passion. Come and experience the possibilities at our co-working space.
-              </p>
-            </div>
-            <div className="flex-1 rounded-[24px] border border-white/10 p-4 backdrop-blur-sm" style={{ backgroundColor: "rgba(41,58,60,0.78)" }}>
-              <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: "#D4BBEA" }}>Made by Me Crafts</p>
-              <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.78)" }}>
-                Made by Me Crafts is a celebration of self-expression, creativity, and thoughtful gifting. From postcards, paper art, trinkets, drawings, and cute crafts to completely custom creations, every piece is handmade to tell a story and make someone feel loved—even on the most random days. Inspired by your memories, ideas, Pinterest boards, and little moments that matter, each piece is made to order and designed just for you. No two people are the same, so why should their gifts be? Whether it's for a birthday, graduation, baby shower, a special milestone, or simply no occasion at all, we're here to help you create something meaningful. Have inspiration? Send it our way. Feeling lost? We've got you—we'll help bring the vision to life.
-              </p>
-            </div>
-          </div>
         </div>
 
         {/* Centre content */}
@@ -160,6 +143,49 @@ export default function Hero({ onReserve }) {
               Reserve Your Spot
               <ArrowDown className="h-4 w-4" />
             </motion.button>
+          </div>
+
+          <div className="mt-8 md:hidden">
+            <Collapsible defaultOpen={false}>
+              <CollapsibleTrigger asChild>
+                <button
+                  className="focus-craft inline-flex w-full items-center justify-between rounded-2xl border border-white/10 bg-white/10 px-5 py-4 text-sm font-semibold uppercase tracking-[0.25em] text-white transition hover:bg-white/15"
+                  type="button"
+                >
+                  <span>About Aurora & Made by Me</span>
+                  <span className="text-xs uppercase tracking-[0.2em] text-white/70">Show details</span>
+                </button>
+              </CollapsibleTrigger>
+              <CollapsibleContent className="mt-4 space-y-4">
+                <div className="rounded-[24px] border border-white/10 bg-white/10 p-4 backdrop-blur-sm">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: "#F2A6A6" }}>Aurora Coworking Space</p>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.78)" }}>
+                    At our co-working space, work is more than just a means to an end. We believe in creating a workspace that inspires and uplifts you, where you can connect with like-minded individuals, collaborate, and create something remarkable. Our modern office is designed to meet your professional needs while igniting your creativity and passion. Come and experience the possibilities at our co-working space.
+                  </p>
+                </div>
+                <div className="rounded-[24px] border border-white/10 bg-white/10 p-4 backdrop-blur-sm">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: "#D4BBEA" }}>Made by Me Crafts</p>
+                  <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.78)" }}>
+                    Made by Me Crafts is a celebration of self-expression, creativity, and thoughtful gifting. From postcards, paper art, trinkets, drawings, and cute crafts to completely custom creations, every piece is handmade to tell a story and make someone feel loved—even on the most random days. Inspired by your memories, ideas, Pinterest boards, and little moments that matter, each piece is made to order and designed just for you. No two people are the same, so why should their gifts be? Whether it's for a birthday, graduation, baby shower, a special milestone, or simply no occasion at all, we're here to help you create something meaningful. Have inspiration? Send it our way. Feeling lost? We've got you—we'll help bring the vision to life.
+                  </p>
+                </div>
+              </CollapsibleContent>
+            </Collapsible>
+          </div>
+
+          <div className="mt-8 hidden md:flex md:mx-auto md:max-w-6xl md:flex-col md:gap-4 lg:flex-row">
+            <div className="flex-1 rounded-[24px] border border-white/10 p-4 backdrop-blur-sm" style={{ backgroundColor: "rgba(41,58,60,0.78)" }}>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: "#F2A6A6" }}>Aurora Coworking Space</p>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.78)" }}>
+                At our co-working space, work is more than just a means to an end. We believe in creating a workspace that inspires and uplifts you, where you can connect with like-minded individuals, collaborate, and create something remarkable. Our modern office is designed to meet your professional needs while igniting your creativity and passion. Come and experience the possibilities at our co-working space.
+              </p>
+            </div>
+            <div className="flex-1 rounded-[24px] border border-white/10 p-4 backdrop-blur-sm" style={{ backgroundColor: "rgba(41,58,60,0.78)" }}>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.32em]" style={{ color: "#D4BBEA" }}>Made by Me Crafts</p>
+              <p className="mt-2 text-sm leading-relaxed" style={{ color: "rgba(253,246,240,0.78)" }}>
+                Made by Me Crafts is a celebration of self-expression, creativity, and thoughtful gifting. From postcards, paper art, trinkets, drawings, and cute crafts to completely custom creations, every piece is handmade to tell a story and make someone feel loved—even on the most random days. Inspired by your memories, ideas, Pinterest boards, and little moments that matter, each piece is made to order and designed just for you. No two people are the same, so why should their gifts be? Whether it's for a birthday, graduation, baby shower, a special milestone, or simply no occasion at all, we're here to help you create something meaningful. Have inspiration? Send it our way. Feeling lost? We've got you—we'll help bring the vision to life.
+              </p>
+            </div>
           </div>
         </div>
       </div>
