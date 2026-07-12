@@ -87,6 +87,21 @@ export const packages = [
     image:       "/menu/edible-flower.png",
   },
   {
+    id:          "tea-blend",
+    name:        "Make your own tea blend",
+    tagline:     "Mix, blend & match your own tea blend 🍵",
+    description:
+      "Mix , blend & match your own tea blend .",
+    duration:    "Open session",
+    materials:   ["Herbal tea leaves", "Dried flowers & spices", "Blending tools"],
+    skillLevel:  "All levels",
+    prices:      [],
+    vendor:      "By Bees Herba Tea",
+    vendorHandle: "@bees_herba_tea",
+    color:       "#D8BFD8",
+    image:       "/menu/teamixing.jpg",
+  },
+  {
     id:          "fuzzy-flowers",
     name:        "Fuzzy Wire (Pipe Cleaner) Flowers",
     tagline:     "Fluffy, cheerful, forever flowers 🌼",
