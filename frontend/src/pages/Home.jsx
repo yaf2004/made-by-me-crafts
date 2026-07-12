@@ -17,7 +17,6 @@ export default function Home() {
         ? prev.filter((p) => p.id !== pkg.id)
         : [...prev, pkg]
     );
-    setTimeout(scrollToRSVP, 200);
   };
 
   return (
